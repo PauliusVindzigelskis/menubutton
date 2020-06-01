@@ -10,7 +10,7 @@ import Foundation
 
 /// A button that looks like hamburger menu, also can looks like cross.
 /// This state follows each other. it is for opened and closed states.
-final class MenuButton: UIButton {
+public final class MenuButton: UIButton {
     /// The representation of top line
     private let topLine = CAShapeLayer()
     /// The representation of middle line
