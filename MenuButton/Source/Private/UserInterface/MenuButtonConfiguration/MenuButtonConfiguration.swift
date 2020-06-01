@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MenuButtonConfiguration {
+public struct MenuButtonConfiguration {
     var textMenuColor: UIColor = UIColor.black
     var textMenuFont: UIFont = UIFont.systemFont(ofSize: 17.0)
     var textMenuSize: CGFloat = 17.0
