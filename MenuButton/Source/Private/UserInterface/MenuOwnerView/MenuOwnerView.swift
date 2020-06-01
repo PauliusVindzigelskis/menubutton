@@ -18,6 +18,7 @@ final class MenuOwnerView: UIView {
     private var animator: UIViewPropertyAnimator?
     private let commonIndent: CGFloat = 16.0
 
+    var cellBackgroundColor: UIColor = .white
     var cellHeight: CGFloat = 58.0
     var bottomIndent: CGFloat = 0.0
     var parentFrame: CGRect = .zero
@@ -158,6 +159,7 @@ extension MenuOwnerView: UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MenuOwnerViewCell", for: indexPath) as? MenuOwnerViewCell else { return UITableViewCell() }
         let unwrapedSettings = unwrapSettings(settings)
         cell.configure(MenuOwnerViewModel(menuItem: dataSource[indexPath.row], settings: unwrapedSettings))
+        cell.backgroundColor = cellBackgroundColor
         return cell
     }
 }

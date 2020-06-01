@@ -12,11 +12,13 @@ final class MenuOwnerViewModelSettings {
     let font: UIFont
     let color: UIColor
     let size: CGFloat
+    let backgroundColor: UIColor
 
-    init(font: UIFont, color: UIColor, size: CGFloat) {
+    init(font: UIFont, color: UIColor, size: CGFloat, backgroundColor: UIColor) {
         self.font = font
         self.color = color
         self.size = size
+        self.backgroundColor = backgroundColor
     }
 
     func makeAttributedString(_ string: String) -> NSAttributedString {

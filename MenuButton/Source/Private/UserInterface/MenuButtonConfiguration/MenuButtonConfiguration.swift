@@ -12,6 +12,7 @@ public struct MenuButtonConfiguration {
     var textMenuColor: UIColor = UIColor.black
     var textMenuFont: UIFont = UIFont.systemFont(ofSize: 17.0)
     var textMenuSize: CGFloat = 17.0
+    var textMenuBackgroundColor: UIColor = .white
     var menuCellHeight: CGFloat = 58.0
     var menuWidth: CGFloat = 300.0
     

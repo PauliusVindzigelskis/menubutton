@@ -100,7 +100,7 @@ private extension MenuButtonView {
         view.onSelected = { [weak self] in self?.toggleMenu(isDeselected: false) }
         view.onDeselect = { [weak self] in self?.toggleMenu() }
         view.onForcedClosure = { [weak self] in self?.forceToggleMenu() }
-        view.settings = MenuOwnerViewModelSettings(font: configuration.textMenuFont, color: configuration.textMenuColor, size: configuration.textMenuSize)
+        view.settings = MenuOwnerViewModelSettings(font: configuration.textMenuFont, color: configuration.textMenuColor, size: configuration.textMenuSize, backgroundColor: configuration.textMenuBackgroundColor)
         
         view.layer.add(configureAnimationTransition(), forKey: kCATransitionReveal)
         
@@ -111,6 +111,7 @@ private extension MenuButtonView {
         view.parentFrame = frame
         view.bottomIndent = bottomIndent
         view.cellHeight = configuration.menuCellHeight
+        view.cellBackgroundColor = configuration.textMenuBackgroundColor
         view.menuWidth = configuration.menuWidth
         view.showType = configuration.showType
         view.dataSource = self.onItems?() ?? []

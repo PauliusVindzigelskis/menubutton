@@ -28,6 +28,7 @@ public enum MenuButtonViewConfig {
     case textMenuColor(UIColor)
     case textMenuFont(UIFont)
     case textMenuSize(CGFloat)
+    case textMenuBackgroundColor(UIColor)
     case menuCellHeight(CGFloat)
     case menuWidth(CGFloat)
     case strokeColor(UIColor)

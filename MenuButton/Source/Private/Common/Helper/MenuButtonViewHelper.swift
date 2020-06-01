@@ -22,6 +22,8 @@ final class MenuButtonViewHelper {
                 buttonConfig.textMenuFont = color
             case .textMenuSize(let size):
                 buttonConfig.textMenuSize = size
+            case .textMenuBackgroundColor(let color):
+                buttonConfig.textMenuBackgroundColor = color
             case .menuCellHeight(let height):
                 buttonConfig.menuCellHeight = height
             case .menuWidth(let width):
