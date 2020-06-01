@@ -11,7 +11,7 @@ import UIKit
 /// An object that manages the content for a rectangular area on the screen.
 public final class MenuButtonView: UIView {
     /// A main button, that interacts with user
-    private var menuButton: MenuButton?
+    public var menuButton: MenuButton?
     /// Needs for show menu above all contents
     private var parentView: UIView?
     /// A view that represent menu
