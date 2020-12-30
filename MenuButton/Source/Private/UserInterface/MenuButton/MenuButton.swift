@@ -8,9 +8,28 @@
 
 import Foundation
 
+public typealias ConfigBlock = (_ cell: UITableViewCell, _ atIndexPath: IndexPath) -> ()
+
 /// A button that looks like hamburger menu, also can looks like cross.
 /// This state follows each other. it is for opened and closed states.
 public final class MenuButton: UIButton {
+    
+    public struct NibConfiguration {
+        public let nibName: String
+        public let bundle: Bundle
+        public let cellHeight: CGFloat
+        
+        public var configCell: ConfigBlock? = nil
+        
+        public init(nibName nn: String, bundle b: Bundle, cellHeight ch: CGFloat, configCell cc: ConfigBlock? = nil) {
+            nibName = nn
+            bundle = b
+            cellHeight = ch
+            configCell = cc
+        }
+        
+    }
+    
     /// The representation of top line
     private let topLine = CAShapeLayer()
     /// The representation of middle line

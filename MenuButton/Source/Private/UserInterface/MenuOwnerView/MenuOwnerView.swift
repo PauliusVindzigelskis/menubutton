@@ -17,7 +17,15 @@ final class MenuOwnerView: UIView {
     private let ownerViewBottomIndent: CGFloat = 16.0
     private var animator: UIViewPropertyAnimator?
     private let commonIndent: CGFloat = 16.0
-
+    
+    var customCellNibConfiguration: MenuButton.NibConfiguration? {
+        didSet(oldValue) {
+            if let config = customCellNibConfiguration {
+                let nib = UINib(nibName: config.nibName, bundle: config.bundle)
+                tableView.register(nib, forCellReuseIdentifier: "CustomCell")
+            }
+        }
+    }
     var cellBackgroundColor: UIColor = .white
     var cellHeight: CGFloat = 58.0
     var bottomIndent: CGFloat = 0.0
@@ -87,6 +95,7 @@ private extension MenuOwnerView {
         tableView.estimatedSectionFooterHeight = 0
         tableView.separatorInset = .zero
         tableView.bounces = false
+        
     }
 
     private func configureTableViewFrame() {
@@ -156,6 +165,13 @@ extension MenuOwnerView: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let customConfig = customCellNibConfiguration {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
+            cell.backgroundColor = cellBackgroundColor
+            customConfig.configCell?(cell, indexPath)
+            return cell
+        }
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MenuOwnerViewCell", for: indexPath) as? MenuOwnerViewCell else { return UITableViewCell() }
         let unwrapedSettings = unwrapSettings(settings)
         cell.configure(MenuOwnerViewModel(menuItem: dataSource[indexPath.row], settings: unwrapedSettings))
@@ -166,7 +182,7 @@ extension MenuOwnerView: UITableViewDelegate {
 
 extension MenuOwnerView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeight
+        return customCellNibConfiguration?.cellHeight ?? cellHeight
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -10,6 +10,8 @@ import UIKit
 
 /// An object that manages the content for a rectangular area on the screen.
 public final class MenuButtonView: UIView {
+    public var customCellNibConfiguration: MenuButton.NibConfiguration?
+    
     /// A main button, that interacts with user
     public var menuButton: MenuButton?
     /// Needs for show menu above all contents
@@ -97,6 +99,7 @@ private extension MenuButtonView {
         
         let view: MenuOwnerView = MenuOwnerView.fromNib()
         
+        view.customCellNibConfiguration = customCellNibConfiguration
         view.onSelected = { [weak self] in self?.toggleMenu(isDeselected: false) }
         view.onDeselect = { [weak self] in self?.toggleMenu() }
         view.onForcedClosure = { [weak self] in self?.forceToggleMenu() }
