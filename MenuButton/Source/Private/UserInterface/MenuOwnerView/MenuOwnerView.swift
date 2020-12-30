@@ -165,11 +165,13 @@ extension MenuOwnerView: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let customConfig = customCellNibConfiguration {
+        if let customConfig = customCellNibConfiguration,
+           customConfig.enableForIndexPath(indexPath) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
             cell.backgroundColor = cellBackgroundColor
             customConfig.configCell?(cell, indexPath)
             return cell
+            //else continue to default one
         }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MenuOwnerViewCell", for: indexPath) as? MenuOwnerViewCell else { return UITableViewCell() }

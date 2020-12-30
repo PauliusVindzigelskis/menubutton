@@ -20,6 +20,7 @@ public final class MenuButton: UIButton {
         public let cellHeight: CGFloat
         
         public var configCell: ConfigBlock? = nil
+        public var enableForIndexPath: (_ indexPath: IndexPath) -> (Bool) = { (_) in true}
         
         public init(nibName nn: String, bundle b: Bundle, cellHeight ch: CGFloat, configCell cc: ConfigBlock? = nil) {
             nibName = nn
